@@ -3,6 +3,7 @@ import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import {User} from "../models/user.model.js"
 import { uploadToCloudinary } from "../utils/cloudinary.js";
+import jwt from "jsonwebtoken"
 
 const genrateAccessTokenAndRefreshToken = async (userId) => {
   try {
@@ -157,8 +158,19 @@ const logoutUser = asyncHandler(async (req,res) => {
 
 })
 
+const refreshAccessToken = asyncHandler(async (req,res) => {
+
+ try {
+  
+ } catch (error) {
+    throw new ApiError(401, error?.message || "Invalid refresh token")
+ }
+
+})
+
 export {
   registerUser,
   loginUser,
   logoutUser,
+  refreshAccessToken
 }
