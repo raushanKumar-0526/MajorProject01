@@ -92,7 +92,7 @@ const loginUser = asyncHandler(async (req,res) => {
   //send cookies
 
   const {email,userName,password} = req.body
-  console.log(email)
+  // console.log(email)
 
   if(!(userName || email)){
     throw new ApiError(400, "username or email required")
@@ -188,7 +188,7 @@ const refreshAccessToken = asyncHandler(async (req,res) => {
             secure: true
         }
     
-        const {accessToken, newRefreshToken} = await generateAccessAndRefereshTokens(user._id)
+        const {accessToken, newRefreshToken} = await genrateAccessTokenAndRefreshToken(user._id)
     
         return res
         .status(200)
